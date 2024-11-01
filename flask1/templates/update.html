@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Comida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #2d2f48;
+            text-align: center;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border-radius: 5px;
+            border: 2px solid #079e6f;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #079e6f;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center; 
+            display: inline-block;
+        }
+        button:hover {
+            background-color: #09bbb4;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #2f6c81;
+            color: #ffffff;
+            padding: 10px;
+            margin: 5px auto;
+            width: 60%;
+            border-radius: 5px;
+        }
+        p {
+            margin: 20px 0;
+            color: #ff0000;
+        }
+        .nav-buttons {
+            margin: 20px;
+        }
+        .nav-buttons a {
+            text-decoration: none;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atualizar Comida</h1>
+    <form action="/update" method="POST">
+        <label for="oldtitle">Nome Atual:</label>
+        <input type="text" id="oldtitle" name="oldtitle" required>
+        
+        <label for="newtitle">Novo Nome:</label>
+        <input type="text" id="newtitle" name="newtitle" required>
+        
+        <button type="submit">Atualizar</button>
+    </form>
+    
+    <h2>Lista de Comidas</h2>
+    <ul>
+        {% for comida in comidas %}
+        <li>{{ comida.titulo }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if mensagem %}
+    <p>{{ mensagem }}</p>
+    {% endif %}    
+
+    <div class="nav-buttons">
+        <a href="/">
+            <button>Cadastrar</button>
+        </a>
+        <a href="/delete">
+            <button>Deletar</button>
+        </a>
+    </div>
+</body>
+</html>
